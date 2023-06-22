@@ -88,6 +88,8 @@ class HttpConnectionHandler extends ConnectionHandler
             'SCRIPT_FILENAME' => request()->server->get('SCRIPT_FILENAME'),
             'PHP_SELF' => request()->server->get('PHP_SELF'),
         ]);
+        
+        (request()->getRouteResolver())()->setAction(['prefix' => '']);
 
         if (request()->hasSession()) {
             $request->setLaravelSession(request()->session());
